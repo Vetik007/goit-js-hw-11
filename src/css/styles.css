@@ -160,7 +160,7 @@ img {
 .gallery__text {
   margin-top: 20px;
   text-align: center;
-
+  font-size: xx-large;
   font-weight: bold;
-  color: #4ab2f3;
+  color: red;
 }

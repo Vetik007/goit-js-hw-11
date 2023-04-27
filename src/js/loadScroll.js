@@ -1,14 +1,16 @@
-import './css/styles.css';
-import { pixabayApi } from './js/serviseApi';
+import '../css/styles.css';
+import { pixabayApi } from './serviseApi';
 import Notiflix from 'notiflix';
 
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const searchForm = document.querySelector('#search-form');
-const gallery = document.querySelector('.gallery');
-const endOfSearchText = document.querySelector('.gallery__text');
-const searchInput = document.querySelector('.input-form');
+const refs = {
+  searchForm: document.querySelector('#search-form'),
+  gallery: document.querySelector('.gallery'),
+  endOfSearchText: document.querySelector('.gallery__text'),
+  searchInput: document.querySelector('.input-form'),
+};
 
 const lightbox = new SimpleLightbox('.gallery a', {
   overlayOpacity: 0.5,
@@ -21,7 +23,7 @@ let page = 1;
 let loadImg = 0;
 const perPage = 40;
 
-searchForm.addEventListener('submit', onSearchForm);
+refs.searchForm.addEventListener('submit', onSearchForm);
 
 async function onSearchForm(e) {
   e.preventDefault();
@@ -29,10 +31,10 @@ async function onSearchForm(e) {
   page = 1;
   loadImg = 0;
   // query = e.currentTarget.searchQuery.value.trim();
-  query = searchInput.value.trim();
-  gallery.innerHTML = '';
+  query = refs.searchInput.value.trim();
+  refs.gallery.innerHTML = '';
 
-  endOfSearchText.classList.add('is-hidden');
+  refs.endOfSearchText.classList.add('is-hidden');
 
   if (query === '') {
     alertEmptySearch();
@@ -66,7 +68,7 @@ async function createCollection() {
   io.observe(getLastImgEl());
 
   if (loadImg === totalHits) {
-    endOfSearchText.classList.remove('is-hidden');
+    refs.endOfSearchText.classList.remove('is-hidden');
   }
 }
 
@@ -123,7 +125,7 @@ function renderGallery(images) {
     )
     .join('');
 
-  gallery.insertAdjacentHTML('beforeend', galleryMarkup);
+  refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 }
 
 function alertImagesToFound(responseData) {
