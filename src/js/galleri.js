@@ -1,7 +1,7 @@
 import '../css/styles.css';
 
 import Notiflix from 'notiflix';
-import { pixabayApi } from './pixabayApi';
+import { pixabayApi } from './PixabayApi';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import getRefs from './refs';
